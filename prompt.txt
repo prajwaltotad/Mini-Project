@@ -1,0 +1,71 @@
+MINI PROJECT: 2D GRAPHICS EDITOR
+Prompt History and AI Responses
+
+--------------------------------------------------
+
+Prompt 1:
+Write a 2D graphics editor using '*' and '_'.
+Write functions to draw a circle, rectangle, line, and triangle.
+
+Response:
+A basic C program was generated that used '*' to represent the shapes and '_' to represent empty spaces. Separate functions were created for drawing a rectangle, line, triangle, and circle.
+
+--------------------------------------------------
+
+Prompt 2:
+I want to take input from the user.
+
+Response:
+The program was modified to accept user input through a menu-driven interface. Users could select the shape they wanted to draw and provide the required dimensions using keyboard input.
+
+--------------------------------------------------
+
+Prompt 3:
+I want only length and width for rectangle, line size, triangle size and radius of circle.
+
+Response:
+The input requirements were simplified. The rectangle now accepts length and width, the line accepts length, the triangle accepts size, and the circle accepts radius. This made the program easier to use and understand.
+
+--------------------------------------------------
+
+Prompt 4:
+I want it to fill the empty spaces using '_' also with just these inputs.
+
+Response:
+The drawing area was redesigned as a fixed-size canvas. All unused positions on the canvas were filled with '_' characters, while the actual shapes were drawn using '*'.
+
+--------------------------------------------------
+
+Prompt 5:
+I want it to have a memory block which can store all the previous input and should display only when I call it to display choice.
+
+Response:
+A history feature was added to the program. Every drawing operation and its dimensions were stored in memory. A separate menu option was introduced so that the stored history would only be displayed when requested by the user.
+
+--------------------------------------------------
+
+Prompt 6:
+Integrate it and give me the code.
+
+Response:
+All previous improvements were combined into a single program. The final version included:
+- Menu-driven user interface
+- Rectangle, line, triangle, and circle drawing functions
+- Canvas filled with '_' characters
+- Memory/history storage for previous inputs
+- Option to display drawing history
+- Exit option for terminating the program
+
+--------------------------------------------------
+
+Prompt 7:
+Additional debugging and refinement.
+
+Response:
+The program was reviewed for user interaction, menu navigation, input handling, and overall functionality. Minor corrections and improvements were made to ensure smooth execution.
+
+--------------------------------------------------
+
+Conclusion:
+
+The GenAI tool was used throughout the development process to assist in designing, modifying, debugging, and integrating the various components of the 2D Graphics Editor. The final program successfully meets the project requirements by providing shape drawing functionality, user interaction, memory storage, and history display features.

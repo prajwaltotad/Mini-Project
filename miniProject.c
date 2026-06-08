@@ -1,120 +1,136 @@
 #include <stdio.h>
-#include <math.h>
 
-void drawLine() {
-    int length;
+#define ROWS 20
+#define COLS 40
 
-    printf("Enter line length: ");
-    scanf("%d", &length);
+char canvas[ROWS][COLS];
 
-    for(int i = 0; i < length; i++) {
-        printf("-");
-    }
+void initializeCanvas()
+{
+    int i, j;
 
-    printf("\n");
+    for(i = 0; i < ROWS; i++)
+        for(j = 0; j < COLS; j++)
+            canvas[i][j] = '_';
 }
 
-void drawRectangle() {
-    int width, height;
+void displayCanvas()
+{
+    int i, j;
 
-    printf("Enter width and height: ");
-    scanf("%d%d", &width, &height);
+    for(i = 0; i < ROWS; i++)
+    {
+        for(j = 0; j < COLS; j++)
+            printf("%c", canvas[i][j]);
 
-    printf("\n");
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) {
-            printf("* ");
-        }
         printf("\n");
     }
 }
 
-void drawTriangle() {
-    int rows;
+void drawRectangle(int width, int height)
+{
+    int i, j;
 
-    printf("Enter number of rows: ");
-    scanf("%d", &rows);
+    for(i = 2; i < 2 + height; i++)
+        for(j = 2; j < 2 + width; j++)
+            canvas[i][j] = '*';
+}
 
-    printf("\n");
-    for (int i = 1; i <= rows; i++) {
-        for (int j = 1; j <= i; j++) {
-            printf("* ");
+void drawLine(int length)
+{
+    int j;
+
+    for(j = 5; j < 5 + length; j++)
+        canvas[10][j] = '*';
+}
+
+void drawTriangle(int height)
+{
+    int i, j;
+
+    for(i = 0; i < height; i++)
+    {
+        for(j = 0; j <= i; j++)
+        {
+            canvas[2 + i][20 + j] = '*';
         }
-        printf("\n");
     }
 }
 
+void drawCircle(int radius)
+{
+    int i, j;
+    int centerX = 30;
+    int centerY = 10;
 
+    for(i = 0; i < ROWS; i++)
+    {
+        for(j = 0; j < COLS; j++)
+        {
+            int dx = j - centerX;
+            int dy = i - centerY;
 
-
-
-void drawCircle() {
-
-    int r;
-
-
-
-    printf("Enter radius: ");
-
-    scanf("%d", &r);
-
-
-
-    for (int y = -r; y <= r; y++) {
-
-        for (int x = -2 * r; x <= 2 * r; x++) {
-            double distance = sqrt((x * x) / 4.0 + y * y);
-            if (distance > r - 0.5 && distance < r + 0.5)
-
-                printf("*");
-
-            else
-
-                printf(" ");
+            if(dx * dx + dy * dy <= radius * radius)
+                canvas[i][j] = '*';
         }
-        printf("\n");
     }
 }
 
-int main() {
-    int choice;
+int main()
+{
+    int choice, value;
 
-    do {
-        printf("\n===== 2D Graphics Editor =====\n");
-        printf("1. Draw Line\n");
-        printf("2. Draw Rectangle\n");
-        printf("3. Draw Triangle\n");
-        printf("4. Draw Circle\n");
-        printf("5. Exit\n");
-        printf("Enter your choice: ");
+    initializeCanvas();
+
+    do
+    {
+        printf("===== 2D GRAPHICS EDITOR =====");
+        printf("\n1. Rectangle\n");
+        printf("2. Line\n");
+        printf("3. Triangle\n");
+        printf("4. Circle\n");
+        printf("5. Display\n");
+        printf("6. Clear Picture\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
         scanf("%d", &choice);
 
-        switch (choice) {
+        switch(choice)
+        {
             case 1:
-                drawLine();
+                printf("Enter width and height: ");
+                scanf("%d%d", &value, &choice);
+                drawRectangle(value, choice);
                 break;
 
             case 2:
-                drawRectangle();
+                printf("Enter line length: ");
+                scanf("%d", &value);
+                drawLine(value);
                 break;
 
             case 3:
-                drawTriangle();
+                printf("Enter triangle height: ");
+                scanf("%d", &value);
+                drawTriangle(value);
                 break;
 
             case 4:
-                drawCircle();
+                printf("Enter radius: ");
+                scanf("%d", &value);
+                drawCircle(value);
                 break;
 
             case 5:
-                printf("Exiting...\n");
+                displayCanvas();
                 break;
 
-            default:
-                printf("Invalid choice!\n");
+            case 6:
+                initializeCanvas();
+                break;
         }
 
-    } while (choice != 5);
+    } while(choice != 0);
 
     return 0;
 }
